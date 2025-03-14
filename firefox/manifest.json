@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Cookie Monster",
+  "version": "1.0.0",
+  "description": "Cross-browser cookie backup and restore",
+  "author": "Navaneeth K M",
+  "homepage_url": "https://github.com/nxvvvv/cookie-monster",
+  "license": "AGPL-3.0",
+  "permissions": [
+    "cookies",
+    "tabs",
+    "storage",
+    "<all_urls>"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cookie-monster@navv.rip",
+      "strict_min_version": "58.0"
+    }
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,264 @@
+.status-container {
+  position: relative;
+}
+
+.status {
+  text-align: center;
+  padding: 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.status.show {
+  opacity: 1;
+}
+
+.status.success {
+  background: var(--success-color);
+  color: white;
+}
+
+.status.error {
+  background: var(--error-color);
+  color: white;
+}
+
+.status.error[data-has-failures="true"] {
+  cursor: pointer;
+}
+
+.status.error[data-has-failures="true"]:hover {
+  background: #c0392b;
+}
+
+.status.error[data-has-failures="true"]::after {
+  content: '▼';
+  margin-left: 8px;
+  font-size: 0.8em;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.status.error[data-has-failures="true"][data-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.failed-list {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.failed-list.show {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.failed-cookie-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+}
+
+.failed-cookie-item:last-child {
+  border-bottom: none;
+}
+
+.failed-cookie-item .domain {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.failed-cookie-item .name {
+  margin: 4px 0;
+  color: var(--secondary-color);
+}
+
+.failed-cookie-item .error {
+  color: var(--error-color);
+  font-size: 0.85em;
+  margin-top: 4px;
+  background: #fff5f5;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.failed-imports-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.failed-imports-title h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: var(--secondary-color);
+}
+
+.failed-count {
+  background: var(--error-color);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
+}
+
+.failed-dropdown-btn {
+  background-color: var(--error-color);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.failed-dropdown-btn:hover {
+  background-color: #c0392b;
+}
+
+.dropdown-arrow {
+  font-size: 0.8em;
+  transition: transform 0.3s;
+}
+
+/* Rest of your existing styles */
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #2c3e50;
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+body {
+  width: 320px;
+  margin: 0;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin: 0;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: #357abd;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.full-width {
+  width: 100%;
+  margin: 4px 0;
+  text-align: center;
+}
+
+.button-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.sub-text {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+  min-width: 280px;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

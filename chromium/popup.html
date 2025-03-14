@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie Monster</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cookie Monster</h1>
+    <div class="actions">
+      <button id="exportBtn" class="btn">Export Cookies</button>
+      <button id="importBtn" class="btn">Import Cookies</button>
+    </div>
+    
+    <!-- Import Options Dialog -->
+    <div id="import-options" class="modal hidden">
+      <div class="modal-content">
+        <h2>Import Options</h2>
+        <div class="button-group-vertical">
+          <button id="chooseFileBtn" class="btn full-width">Choose File</button>
+          <button id="pasteDataBtn" class="btn full-width">Paste Data</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Options Dialog -->
+    <div id="export-options" class="modal hidden">
+      <div class="modal-content">
+        <h2>Export Options</h2>
+        <div class="button-group-vertical">
+          <button id="saveFileBtn" class="btn full-width">
+            Save as File
+            <span class="sub-text">(Chromium browsers)</span>
+          </button>
+          <button id="copyClipboardBtn" class="btn full-width">
+            Copy to Clipboard
+            <span class="sub-text">(All browsers)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paste Data Dialog -->
+    <div id="paste-dialog" class="modal hidden">
+      <div class="modal-content">
+        <h2>Paste Encrypted Data</h2>
+        <textarea id="importData" placeholder="Paste the encrypted cookie data here" rows="6"></textarea>
+        <div class="button-group">
+          <button id="confirmPaste" class="btn">Import</button>
+          <button id="cancelPaste" class="btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Dialog -->
+    <div id="password-dialog" class="modal hidden">
+      <div class="modal-content">
+        <h2>Enter Password</h2>
+        <input type="password" id="password" placeholder="Enter encryption password">
+        <div class="button-group">
+          <button id="confirmPassword" class="btn">Confirm</button>
+          <button id="cancelPassword" class="btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status and Failed Imports Section -->
+    <div class="status-container">
+      <div id="status" class="status"></div>
+      <div id="failedImports" class="failed-list">
+        <div id="failedCookiesList"></div>
+      </div>
+    </div>
+
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+  </div>
+  <script src="crypto-utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
